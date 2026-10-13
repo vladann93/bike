@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bike-key-v7';
+const CACHE_NAME = 'bike-key-v8';
 const ASSETS = [
   './',
   './index.html',
