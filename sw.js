@@ -1,8 +1,9 @@
-const CACHE_NAME = 'bike-key-v6';
+const CACHE_NAME = 'bike-key-v7';
 const ASSETS = [
   './',
   './index.html',
-  './manifest.json'
+  './manifest.json',
+  './niu_scooter.jpg'
 ];
 
 // Install: Cache all files locally
