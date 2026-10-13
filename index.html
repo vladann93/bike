@@ -220,7 +220,7 @@
     </button>
 
     <!-- CONNECT / RECONNECT BUTTON -->
-    <button class="btn btn-connect" id="btnConnect">
+    <button class="btn btn-connect" id="btnConnect" onclick="connectBle()">
       🔗 Connect to SmartBike
     </button>
   </div>
@@ -273,6 +273,10 @@
     }
 
     async function connectBle() {
+      if (!navigator.bluetooth) {
+        alert("Web Bluetooth is not supported or enabled on this browser. Please use Google Chrome on Android.");
+        return;
+      }
       try {
         vibrate(40);
         setUiState(false, true, "Scanning...");
@@ -312,6 +316,9 @@
       } catch (err) {
         console.error("BLE Connect failed:", err);
         setUiState(false);
+        if (err.name !== 'NotFoundError') {
+          alert("Bluetooth Notice: " + (err.message || err));
+        }
       }
     }
 
@@ -377,6 +384,9 @@
         }
       }
     }
+
+    // Button click handlers
+    btnConnect.addEventListener("click", connectBle);
 
     // 7 pulses * (300ms + 300ms) = ~4.2s
     btnStart.addEventListener("click", () => {
